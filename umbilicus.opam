@@ -5,6 +5,8 @@ description: "A longer description"
 maintainer: ["Maintainer"]
 authors: ["Author"]
 license: "WTFPL"
+homepage: "https://ocaml.org"
+bug-reports: "Goodluck"
 depends: [
   "dune" {>= "3.21"}
   "ocaml" {>= "4.14.2"}

@@ -7,6 +7,8 @@
 
 (authors "Author")
 (maintainers "Maintainer")
+(bug_reports "Goodluck")
+(homepage "https://ocaml.org")
 
 (license "WTFPL")
 
