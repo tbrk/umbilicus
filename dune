@@ -1,0 +1,30 @@
+
+(executable
+  (name stimpy)
+  (modules stimpy)
+  (libraries umbilicus))
+
+(executable
+  (name gen_libjerry_inc)
+  (modules gen_libjerry_inc)
+  (libraries sexplib0 csexp))
+
+(subdir jerry-build
+  (rule
+    (deps (file build/libjerry.sexp))
+    (action (with-stdout-to libjerry.inc
+               (run ../gen_libjerry_inc.exe %{deps})))
+  )
+)
+
+(subdir jerry-build
+  (rule
+    (deps (source_tree ../libjerry))
+    (targets (dir build))
+    (action (progn
+      (run cmake -S ../libjerry -B ./build)
+      (run cmake --build ./build --config Release)
+    ))
+  )
+)
+

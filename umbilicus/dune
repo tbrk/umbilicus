@@ -1,0 +1,16 @@
+(dynamic_include ../jerry-build/libjerry.inc)
+
+(library
+  (name umbilicus)
+  (public_name umbilicus)
+  (synopsis "dune testing")
+  (modules umbilicus)
+  (foreign_stubs
+    (language c)
+    (names ocaml_umbilicus)
+    (flags -I../libjerry))
+  (library_flags -ccopt "-L$CAMLORIGIN"
+                 -ccopt "-Wl,-rpath,$CAMLORIGIN")
+  (c_library_flags -ljerry -Lumbilicus/)
+)
+
