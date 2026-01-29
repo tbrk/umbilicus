@@ -16,7 +16,7 @@
  (description "A longer description")
  (depends
    (ocaml (>= 4.14.2))
-   (conf-cmake (and (>= 3.4) :build))
+   (conf-cmake (and (>= 3.31) :build))
    (sexplib0 :build)
    (csexp :build)
  )
