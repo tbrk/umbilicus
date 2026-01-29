@@ -6,7 +6,7 @@
    `jerry-build/libjerry.sexp` file.
 3. `umbilicus/dune` contains a `(dynamic_include 
    ../jerry-build/libjerry.sexp)` to
-    1. copy `jerry-build/build/libjerry.so` into `umbilicus`
+    1. copy `jerry-build/build/libjerry.so` into `umbilicus/`
     2. install `umbilicus/libjerry.so` in the `lib` section
 
 ## Problem 1
@@ -29,13 +29,18 @@ stanzas?
 
 ## Problem 3
 
-`dune exec -- ./stimpy.exe` fails with `error while loading shared 
-libraries: libjerry.so: cannot open shared object file: No such file or 
-directory`. This is because it is built with a relative path to 
+`dune exec -- ./stimpy.exe` fails with
+
+```
+error while loading shared libraries: libjerry.so: cannot open shared object 
+file: No such file or directory
+```
+
+This is because it is built with a relative path to 
 `umbilicus/umbilicus.cmxa`, thus replacing `$CAMLORIGIN` with `umbilicus/` 
-in the executable's `RUNPATH`: `readelf -d _build/default/stimpy.exe | grep 
-RUNPATH`. Setting the working directory to `_build/default`, or any other 
-directory with a relative path `./umbilicus/libjerry.so` (!), and then 
+in the executable's `RUNPATH` (`readelf -d _build/default/stimpy.exe | grep 
+RUNPATH`). Setting the working directory to `_build/default`, or any other 
+directory with a relative path `./umbilicus/libjerry.so` /!\, and then 
 running `./stimpy.exe` works.
 
 Is there an option to `exec` using full paths to `.cmxa` files?
