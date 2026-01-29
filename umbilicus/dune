@@ -8,7 +8,11 @@
   (foreign_stubs
     (language c)
     (names ocaml_umbilicus)
-    (flags :standard -I../libjerry))
+    (flags :standard
+           -I../libjerry
+           ; hack to ensure that libjerry.so is copied to this
+           ; directory by the rule in libjerry.inc <sigh>
+           -DDUNE_DEP=%{dep:libjerry.so}))
   (library_flags -ccopt "-L$CAMLORIGIN"
                  -ccopt "-Wl,-rpath,$CAMLORIGIN")
   (c_library_flags -ljerry -Lumbilicus/)
