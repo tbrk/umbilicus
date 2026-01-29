@@ -9,6 +9,13 @@
     1. copy `jerry-build/build/libjerry.so` into `umbilicus/`
     2. install `umbilicus/libjerry.so` in the `lib` section
 
+NB: All of this complexity is obviously unnecessary for this simple example. 
+The idea is to find solutions for a more complicated example where 
+platform-specific flags passed to cmake determine which interdependent 
+shared libraries to build and install
+(see [ocaml_ortools (vendor2 
+branch)](https://github.com/INRIA/ocaml-ortools/tree/vendor2)).
+
 ## Problem 1
 
 `opam install` does not install `libjerry.so`, although it does if one 
