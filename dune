@@ -2,6 +2,7 @@
 (executable
   (name stimpy)
   (modules stimpy)
+  (modes byte exe)
   (libraries umbilicus))
 
 (executable

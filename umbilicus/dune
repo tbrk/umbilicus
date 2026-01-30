@@ -13,8 +13,11 @@
            ; hack to ensure that libjerry.so is copied to this
            ; directory by the rule in libjerry.inc <sigh>
            -DDUNE_DEP=%{dep:libjerry.so}))
-  (library_flags -ccopt "-L$CAMLORIGIN"
+  (library_flags :standard
+                 -ccopt "-L$CAMLORIGIN"
                  -ccopt "-Wl,-rpath,$CAMLORIGIN")
-  (c_library_flags -ljerry -Lumbilicus/)
+  (c_library_flags :standard
+                   -ljerry -Lumbilicus/
+                   -Wl,-rpath,../lib)
 )
 
