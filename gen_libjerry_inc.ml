@@ -34,7 +34,7 @@ let () =
   let install = Sexp.(List [
     Atom "install";
     List (Atom "files" :: List.map (fun x -> Atom x) libs);
-    List [Atom "section"; Atom "lib"];
+    List [Atom "section"; Atom "libexec"];
   ])
   in
   Format.printf "@[<v>%a@;@;%a@]"
